@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-title">
+
+    <h1>Skills</h1>
+
+    <a href="{% url 'add_skill' %}" class="add-btn">
+        + Add Skill
+    </a>
+
+</div>
+
+<table>
+
+    <thead>
+
+        <tr>
+            <th>Skill Name</th>
+            <th>Progress</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for skill in skills %}
+
+        <tr>
+
+            <td>{{ skill.name }}</td>
+
+            <td>
+                <div class="progress">
+                    <div class="progress-bar bg-success" style="width: {{ skill.progress }}%">
+                        {{ skill.progress }}%
+                    </div>
+                </div>
+            </td>
+
+            <td>
+
+                <a href="{% url 'edit_skill' skill.id %}" class="action-btn edit-btn">
+                    Edit
+                </a>
+
+                <a href="{% url 'delete_skill' skill.id %}" class="action-btn delete-btn">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% empty %}
+
+        <tr>
+
+            <td colspan="3" class="empty">
+                No Skills Added
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

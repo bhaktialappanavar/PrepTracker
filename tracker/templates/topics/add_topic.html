@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Add Topic</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+        Save Topic
+    </button>
+
+</form>
+
+<br>
+
+<a href="{% url 'topic_list' %}">
+    Back
+</a>
+
+
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard-header">
+
+    <h1>
+    <span id="typing"></span>
+    </h1>
+    <p>Keep learning every day. Your dream job is getting closer.</p>
+
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <h2>{{ total_skills }}</h2>
+        <p>Total Skills</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ completed_topics }}</h2>
+        <p>Completed Topics</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ pending_tasks }}</h2>
+        <p>Pending Tasks</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ study_hours }}</h2>
+        <p>Study Hours</p>
+    </div>
+
+</div>
+
+<!-- Charts Section -->
+
+<div class="dashboard-grid">
+
+    <div class="dashboard-box">
+
+        <h2><i class="fa-solid fa-chart-simple"></i> Topics Progress</h2>
+
+        <canvas id="topicChart"
+            data-completed="{{ completed }}"
+            data-remaining="{{ remaining }}">
+        </canvas>
+
+    </div>
+
+    <div class="dashboard-box">
+
+        <h2><i class="fa-solid fa-bars-progress"></i> Study Hours</h2>
+
+        <canvas
+            id="studyChart"
+            data-hours='[{% for log in studylogs %}{{ log.hours }}{% if not forloop.last %},{% endif %}{% endfor %}]'
+            data-dates='[{% for log in studylogs %}"{{ log.date|date:"M d" }}"{% if not forloop.last %},{% endif %}{% endfor %}]'>
+        </canvas>
+
+    </div>
+
+</div>
+
+<div class="dashboard-section">
+
+    <h2>Overall Progress</h2>
+
+    <div class="dashboard-progress">
+
+        <div class="dashboard-progress-fill"
+             style="width: {{ progress }}%;">
+            {{ progress }}%
+        </div>
+
+    </div>
+
+</div>
+
+<div class="dashboard-grid">
+
+    <div class="dashboard-box">
+
+        <h2> <i class="fa-solid fa-book-open"></i> Recent Study Logs</h2>
+
+        <table>
+
+            <tr>
+                <th>Date</th>
+                <th>Hours</th>
+            </tr>
+
+            {% for log in studylogs %}
+
+            <tr>
+                <td>{{ log.date }}</td>
+                <td>{{ log.hours }}</td>
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="2">No Study Logs</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+    <div class="dashboard-box">
+
+    <h2><i class="fa-solid fa-calendar-days"></i> Study Calendar</h2>
+
+    <div id="calendar"></div>
+
+    </div>
+
+    <div class="dashboard-box">
+
+        <h2><i class="fa-solid fa-spinner"></i> Pending Tasks</h2>
+
+        <table>
+
+            <tr>
+                <th>Task</th>
+                <th>Status</th>
+            </tr>
+
+            {% for task in tasks %}
+
+            <tr>
+                <td>{{ task.title }}</td>
+                <td><span class="pending">Pending</span></td>
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="2">No Pending Tasks</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

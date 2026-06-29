@@ -1,0 +1,136 @@
+/* FORM CONTAINER */
+
+.form-container{
+    width: 100%;
+    max-width: 650px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.form-container h1{
+    text-align:center;
+    color:#1e293b;
+    margin-bottom:30px;
+    font-size:32px;
+}
+
+
+/* FORM GROUP */
+
+.form-group{
+    margin-bottom:22px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:600;
+    color:#374151;
+    margin-bottom:8px;
+}
+
+
+/* INPUTS */
+
+.form-control,
+input[type=text],
+input[type=number],
+input[type=date],
+input[type=email],
+input[type=password],
+textarea,
+select{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    outline:none;
+    font-size:16px;
+    transition:.3s;
+    background:#fff;
+    box-sizing:border-box;
+}
+
+
+textarea{
+    resize:vertical;
+    min-height:120px;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#71826C;
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+}
+
+
+/* CHECKBOX */
+
+input[type=checkbox]{
+    width:18px;
+    height:18px;
+    cursor:pointer;
+}
+
+
+/* BUTTONS */
+
+.form-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+}
+
+
+.btn{
+    padding:12px 28px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+
+.btn-success{
+    background:#71826C;
+    color:white;
+}
+
+.btn-success:hover{
+    background:#71826C;
+    transform:translateY(-2px);
+}
+
+
+.btn-secondary{
+    background:#64748b;
+    color:white;
+}
+
+.btn-secondary:hover{
+    background:#475569;
+}
+
+
+/* LINKS */
+
+.back-link{
+    text-align:center;
+    margin-top:20px;
+}
+
+.back-link a{
+    color:#71826C;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.back-link a:hover{
+    text-decoration:underline;
+}

@@ -1,0 +1,15 @@
+/* NAVBAR*/
+
+.navbar{
+    background:white;
+    height:80px;
+    padding:0 35px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.welcome{
+    font-weight:600;
+}

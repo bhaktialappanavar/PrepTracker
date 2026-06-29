@@ -1,0 +1,65 @@
+{% extends 'auth_base.html' %}
+
+{% block content %}
+
+<div class="auth-container">
+    <div class="auth-card">
+
+        <div class="auth-header">
+            <h2>Create Your Account <i class="fa-solid fa-user"></i></h2>
+            <p>Start tracking your interview preparation today.</p>
+        </div>
+
+        <form method="POST" novalidate>
+
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+
+            <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+            </div>
+
+            {% endif %}
+
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Confirm Password
+                </label>
+
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+
+            </div>
+
+            <button type="submit" class="btn auth-btn w-100">
+                Create Account
+            </button>
+
+        </form>
+
+        <div class="auth-footer">
+            <p>Already have an account?<a href="{% url 'login' %}">Login</a></p>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

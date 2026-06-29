@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-title d-flex justify-content-between align-items-center mb-4">
+
+    <h1>Topics</h1>
+
+    <div class="d-flex">
+
+        <input
+            type="text"
+            id="searchSkill"
+            class="form-control me-2"
+            placeholder="Search by Skill">
+
+        <a href="{% url 'add_topic' %}" class="btn btn-success">
+            + Add Topic
+        </a>
+
+    </div>
+
+</div>
+
+<table>
+
+    <thead>
+
+        <tr>
+
+            <th>Skill</th>
+            <th>Topic</th>
+            <th>Status</th>
+            <th>Completed Date</th>
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="topicTable">
+
+        {% for topic in topics %}
+
+        <tr>
+
+            <td>{{ topic.skill.name }}</td>
+            <td>{{ topic.title }}</td>
+            <td>
+
+                {% if topic.completed %}
+
+                    <span class="completed">✔ Completed</span>
+
+                {% else %}
+
+                    <span class="pending">✖ Pending</span>
+
+                {% endif %}
+
+            </td>
+
+            <td>
+                {% if topic.completed %}
+                    {{ topic.completed_date }}
+                {% else %}
+                    Not Completed
+                {% endif %}
+            </td>
+
+            <td>
+
+                <a href="{% url 'edit_topic' topic.id %}" class="action-btn edit-btn">
+                    Edit
+                </a>
+
+                <a href="{% url 'delete_topic' topic.id %}" class="action-btn delete-btn">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% empty %}
+
+        <tr>
+
+            <td colspan="5" class="empty">
+                No Topics Added
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("searchSkill");
+
+    searchInput.addEventListener("keyup", function () {
+
+        const value = this.value.toLowerCase();
+
+        const rows = document.querySelectorAll("#topicTable tr");
+
+        rows.forEach(function(row){
+
+            const skill = row.cells[0].textContent.toLowerCase();
+
+            if(skill.includes(value)){
+
+                row.style.display = "";
+
+            }
+
+            else{
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

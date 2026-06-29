@@ -1,0 +1,191 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PrepTracker</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/cards.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+{% if user.is_authenticated %}
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <h3 class="logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        PrepTracker
+    </h3>
+
+    <ul>
+
+        <li>
+            <a href="{% url 'dashboard' %}">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'skill_list' %}">
+                <i class="fa-solid fa-code"></i>
+                Skills
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'topic_list' %}">
+                <i class="fa-solid fa-book-open"></i>
+                Topics
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'task_list' %}">
+                <i class="fa-solid fa-list-check"></i>
+                Daily Tasks
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'studylog_list' %}">
+                <i class="fa-solid fa-clock"></i>
+                Study Logs
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'home' %}">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+{% endif %}
+
+<!-- Main Content -->
+
+<div class="main">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+
+    <div class="container-fluid">
+
+        <h4 class="m-0">
+            Interview Preparation Tracker
+        </h4>
+
+        <div class="ms-auto">
+
+            {% if user.is_authenticated %}
+
+                <span class="me-3 fw-bold">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    Welcome, {{ user.username }}
+
+                </span>
+
+                <form action="{% url 'logout' %}" method="POST" class="d-inline">
+
+                {% csrf_token %}
+
+                <button type="submit" class="btn btn-danger">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+                </button>
+
+                </form>
+
+            {% else %}
+
+                <a href="{% url 'login' %}" class="btn btn-primary me-2">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Login
+
+                </a>
+
+                <a href="{% url 'register' %}" class="btn btn-success">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Register
+
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="container-fluid mt-4">
+
+{% if messages %}
+
+    {% for message in messages %}
+
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+
+            {{ message }}
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script src="{% static 'js/charts.js' %}"></script>
+
+</body>
+
+</html>

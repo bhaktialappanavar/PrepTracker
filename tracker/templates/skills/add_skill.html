@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h1>Add Skill</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <div class="form-buttons">
+
+            <button class="btn btn-success">
+                Save Skill
+            </button>
+
+        </div>
+
+    </form>
+
+    <div class="back-link">
+
+        <a href="{% url 'skill_list' %}">
+            ← Back
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

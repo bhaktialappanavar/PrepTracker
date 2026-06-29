@@ -1,0 +1,133 @@
+/* PAGE TITLE */
+
+.page-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.page-title h1{
+    color:#1e293b;
+    font-size:34px;
+}
+
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+table th{
+    background:#C19E22;
+    color:white;
+    padding:18px;
+    font-size:16px;
+}
+
+table td{
+    padding:18px;
+    border-bottom:1px solid #eee;
+}
+
+table tr:hover{
+    background:#f8fafc;
+}
+
+
+/* STATUS */
+
+.completed{
+    color:#71826C;
+    font-weight:600;
+}
+
+.pending{
+    color:#E5C544;
+    font-weight:600;
+}
+
+
+/* ACTION BUTTONS */
+
+.action-btn{
+    text-decoration:none;
+    padding:8px 16px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+    margin-right:8px;
+}
+
+.edit-btn{
+    background:#C19E22;
+    color:white;
+}
+
+.edit-btn:hover{
+    background:#C19E22;
+}
+
+.delete-btn{
+    background:#E5C544;
+    color:white;
+}
+
+.delete-btn:hover{
+    background:#E5C544;
+}
+
+
+/* ADD BUTTON */
+
+.add-btn{
+    background:#71826C;
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.add-btn:hover{
+    background:#71826C;
+}
+
+
+/* EMPTY ROW */
+
+.empty{
+    text-align:center;
+    color:#64748b;
+    padding:30px;
+}
+
+/* SKILL PROGRESS BAR */
+
+.skill-progress{
+    width:100%;
+    height:24px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.skill-progress-fill{
+    height:100%;
+    background:linear-gradient(90deg,#c19e1d,#C19E22);
+    color:#fff;
+    text-align:center;
+    line-height:24px;
+    font-size:13px;
+    font-weight:600;
+    border-radius:20px;
+    transition:width .5s ease;
+}
