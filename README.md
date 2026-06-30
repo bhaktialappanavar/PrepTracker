@@ -173,4 +173,4 @@ GitHub: https://github.com/bhaktialappanavar
 
 ## 📄 License
 
-This project is developed for educational purposes as a personal portfolio and final-year project.
+This project is developed for educational purposes as a personal portfolio.
