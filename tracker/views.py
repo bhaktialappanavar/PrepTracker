@@ -23,6 +23,8 @@ def update_skill_progress(skill):
 # HOME
 
 def home(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
     return render(request, "home.html")
 
 # DASHBOARD
